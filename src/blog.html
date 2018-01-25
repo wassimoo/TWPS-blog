@@ -24,9 +24,9 @@
 <div class="m-wrapper m-blog" id="m-wrapper">
     <div class="m-main_slider">
         <div class="container m-breadcrumb">
-            <h3>BLOG SINGLE</h3>
+            <h3>Blog TWPS</h3>
             <div class="m-bread_links">
-                <a href="../index.php">Home</a> <a href="blog.html">Blog</a> <span>Blog SINGLE</span>
+                <a href="../index.php">Home</a> <a href="blog.html">Blog</a> <span>{{Title}}</span>
             </div>
         </div>
     </div>
@@ -36,43 +36,20 @@
                 <div class="m-blog_listing m-blog_masonry clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-blog_list_single">
                         <div class="m-blog_list_img" id="cover">
-                            <img src="assets/images/blog_sing" class="img-responsive" alt="">
+                            <img src="{{imgblog}}" class="img-responsive" alt="">
                         </div>
                         <div class="m-blog_list_details">
-                            <div id="title"><h2>BLOG TITLE</h2></div>
+                            <div id="title"><h2>{{Title}}</h2></div>
                             <div class="m-blog_list_info" id="info">
-                                <span>by: Admin</span> /
-                                <span>on: 12-05-2017</span> /
-                                <span>in:
-                      <a href="#">design</a>
-                     </span>
+                                <span>by: {{Auth}}</span> /
+                                <span>on: {{date}}</span> /
+
                             </div>
                             <div id="main_text">
                                 <p>
-                                    One for all and all for one, Muskehounds are always ready. One for all and all for
-                                    one, helping everybody. One for all and all for one, it's a pretty story. Sharing
-                                    everything with fun, that's the way to be. One for all and all for one, Muskehounds
-                                    are always ready. One for all and all for one, helping everybody. One for all and
-                                    all for one, can sound pretty corny. If you've got a problem chum, think how it
-                                    could be.
+                                   {{content}}
                                 </p>
-                                <p>
-                                    Sharing everything with fun, that's the way to be. One for all and all for one,
-                                    Muskehounds are always ready. One for all and all for one, helping everybody. One
-                                    for all and all for one, can sound pretty corny.
-                                </p>
-                                <p>
-                                    One for all and all for one, Muskehounds are always ready. One for all and all for
-                                    one, helping everybody. One for all and all for one, it's a pretty story.
-                                </p>
-                                <p>
-                                    One for all and all for one, Muskehounds are always ready. One for all and all for
-                                    one, helping everybody. One for all and all for one, it's a pretty story. Sharing
-                                    everything with fun, that's the way to be. One for all and all for one, Muskehounds
-                                    are always ready. One for all and all for one, helping everybody. One for all and
-                                    all for one, can sound pretty corny. If you've got a problem chum, think how it
-                                    could be.
-                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -81,19 +58,16 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-side_bar">
                 <div class="m-sidebar_single">
                     <form action="#">
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Recherche">
                         <button><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 <div class="m-sidebar_single">
-                    <h4>RECENT POSTS</h4>
+                    <h4>post récent</h4>
                     <ul>
-                        <li><a href="#">Single Posts</a></li>
-                        <li><a href="#">Video Posts</a></li>
-                        <li><a href="#">Achitecture</a></li>
-                        <li><a href="#">design</a></li>
-                        <li><a href="#">Photography</a></li>
-                        <li><a href="#">Blockquotes</a></li>
+                        {%for article in articles%}
+                        <li><a href="{{article.lien}}">{{article.nom}}</a></li>
+
                     </ul>
                 </div>
                 <div class="m-sidebar_single">
@@ -175,7 +149,7 @@
     <footer id="m-footer">
         <div class="m-lg_outer m-footer m-mt90">
             <div class="container text-right">
-                <p class="m-copyright">One. 2017 All rights reserved</p>
+                <p class="m-copyright"> 2018 All rights reserved for AlphaSolutions</p>
             </div>
         </div>
     </footer>
