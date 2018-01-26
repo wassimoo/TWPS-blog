@@ -17,7 +17,7 @@ class Queries
 
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if (!self::validateData($data)) {
-            require_once __DIR__ . "DataExceptions/InvalidDataException.php";
+            require_once __DIR__ . "/DataExceptions/InvalidDataException.php";
             throw new invalidDataException();
         }
 
@@ -31,8 +31,6 @@ class Queries
         } else {
             $result = $stmt->execute();
         }
-
-        print_r($stmt->errorInfo());
 
 
         $type = strtolower($type);

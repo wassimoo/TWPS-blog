@@ -1,6 +1,7 @@
 Options +FollowSymLinks
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
+
 RewriteRule ^(.*)$ src/index.php [NC,L]
 
 ErrorDocument 400 400.html

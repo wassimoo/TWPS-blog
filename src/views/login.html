@@ -5,34 +5,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Espace d'Administrateur</title>
-    <link href="assets/css/login.min.css" rel="stylesheet">
+    <link href="src/assets/css/login.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-parallax parallax-overlay accounts-page" style='background-image: url("assets/images/login_bg.jpg")'>
-<div class="container">
-    <div class="row pb30">
-        <div class="col-lg-4 col-md-6 mr-auto ml-auto col-sm-8">
-            <h3 class="text-white text-center mb30">Espace Administrateur</h3>
-            <form>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Pseudo">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Mot de passe">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-rounded btn-primary btn-block">Se Connecter</button>
-                </div>
-                <div class="text-center" style="display: none" id="incp">
-                    <a href="#">Mot de passe incorrect !</a>
-                    <hr>
+<body class="bg-parallax parallax-overlay accounts-page" style='background-image: url("src/assets/images/login_bg.jpg")'>
+    <div class="container">
+        <div class="row pb30">
+            <div class="col-lg-4 col-md-6 mr-auto ml-auto col-sm-8">
+                <h3 class="text-white text-center mb30">Espace Administrateur</h3>
+                <form>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Pseudo" id="pseudo">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Mot de passe" id="password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-rounded btn-primary btn-block" id="login_btn">Se Connecter</button>
+                    </div>
+                    <div class="text-center" style="display: none" id="incp">
+                        <a href="#">Mot de passe incorrect !</a>
+                        <hr>
 
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
+    <script src="src/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="src/assets/js/main.js"></script>
 </body>
 
 </html>

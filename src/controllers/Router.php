@@ -8,8 +8,10 @@ class Router
 
     public static function getInstance()
     {
-        if (!isset(self::$instance))
+        if (!isset(self::$instance)) {
             self::$instance = new Router();
+        }
+
         return self::$instance;
     }
 
@@ -26,17 +28,7 @@ class Router
     public function dispatch($params)
     {
         $parsedUrl = $this->parseUrl($params[0]);
-        switch ($parsedUrl[1]) {
-            case "home":
-                require_once "ViewGenerators/Home.php";
-                break;
-            case "login":
-                require_once "ViewGenerators/Login.php";
-                break;
-            default:
-                require_once "ViewGenerators/Home.php";
-                break;
-        }
+        return $parsedUrl[1];
     }
 
     /**

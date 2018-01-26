@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class TwigLib
 {
@@ -16,7 +16,7 @@ class TwigLib
             $DATA : Array of data to be rendered 
      * */
 
-    public static function init($fileName)
+    private static function init($fileName)
     {
         $loader = new Twig_Loader_Filesystem(__DIR__ . '/../views/');
         $twig = new Twig_Environment($loader, array(

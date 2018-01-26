@@ -2,7 +2,7 @@
 //const InlineEditor = require( '@ckeditor/ckeditor5-build-inline' );
 const BaloonEditor = require('@ckeditor/ckeditor5-build-balloon');
 
-const Editorconfig = require('./src/js/CKEditorConfig.js')
+const Editorconfig = require('./src/assets/js/CKEditorConfig.js')
 
 
 BaloonEditor

@@ -1,23 +1,23 @@
-(document).ready(function () {
-    $("#login_btn").click(function () {
+$(document).ready(function () {
+    $("#login_btn").click(function(e) {
+        e.preventDefault();
         var pseudo = $("#pseudo").val();
         var password = $("#password").val();
         var request =
             $.ajax({
                 type: "POST",
-                url: "login.php",
+                url: "validate",
                 data: {
                     id: pseudo,
                     pwd: password
                 },
                 dataType: "html",
                 success: function (html) {
-                    if (html == false)
+                    if(html != "true")
                         $("#incp").show();
                     else
-                        window.location.href = "../../index.php";
-                }
-
+                    window.location.replace("home");  
+            }
             });
     });
 });
