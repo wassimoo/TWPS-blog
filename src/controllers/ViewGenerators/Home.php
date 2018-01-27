@@ -7,7 +7,7 @@
  */
 session_start();
 if (!isset($_SESSION["username"])) {
-    require_once "Login.php";
+    header("Location: login");
 } else {
     echo "Hello from Home";
     echo "<a href='logout'>you can logout </a>";

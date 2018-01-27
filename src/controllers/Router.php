@@ -8,7 +8,7 @@ class Router
 
     public static function getInstance()
     {
-        if (!isset(self::$instance)) {
+        if (!isset(self::$instance)){
             self::$instance = new Router();
         }
 
@@ -28,7 +28,7 @@ class Router
     public function dispatch($params)
     {
         $parsedUrl = $this->parseUrl($params[0]);
-        return $parsedUrl[1];
+        return $parsedUrl;
     }
 
     /**

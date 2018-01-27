@@ -8,12 +8,13 @@
 
 require_once __DIR__ . "/../../models/dbConfig.php";
 require_once __DIR__ . "/../../models/Queries.php";
+require_once __DIR__ . "/../../models/Session.php";
 
 class LoginValidation
 {
     public static function validate()
     {
-        if (isset($_SESSION["username"])) {
+        if (Session::LoadSession()) {
             return true;
         }
 
@@ -33,10 +34,10 @@ class LoginValidation
             $dbh = $db->establishConnection($password);
             $query = "SELECT COUNT(username) AS COUNTS FROM admin WHERE username = ? AND password  = ? ";
             $rows = Queries::performQuery($dbh, $query, array($_POST['id'], $_POST['pwd']), "select");
-
+            $dbh = null;
             if ($rows[0][0] == 1) {
                 $_SESSION["dbc"] = $db;
-                $_SESSION["username"] = $_POST['id'];
+                Session::resetSession($_POST['id']);
                 return true;
             } else {
                 $db = null;

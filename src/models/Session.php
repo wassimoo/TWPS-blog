@@ -6,7 +6,7 @@
  * Time: 23:24
  */
 
-require_once("Utils.php");
+require_once "Utils.php";
 
 class Session
 {
@@ -19,41 +19,38 @@ class Session
 
     /**
      * Load Existing Session, Check for timeout, regenerate_id and redirect to login page if necessary
-     * @param string $url path to login page in case of failure
      * @param int $activityTimeOut last activity time out interval value in seconds
      * @param int $last_reg_time last refresh time out interval value in seconds
-     * @return boolean true | false stating session loading success | failure.
+     * @return boolean true | false stating session state (valid or not ).
      */
 
-    public static function LoadSession($url)
+    public static function LoadSession()
     {
         session_start();
 
         if (!isset($_SESSION['last_activity']) || !isset($_SESSION['last_reg_time']) || !isset($_SESSION['username']) || !isset($_SESSION["dbc"]))
-            //something is wrong! verify user login again
+        {
+            //something is wrong! login again
             return false;
-        else {
+        } else {
             //Verify session is still valid ( last activity < 2 hours ago )
-            /* if ($_SESSION['last_activity'] > time() - 60 * 60 * 2) {
-                 session_unset();
-                 session_destroy();
-                 header($url);
-             } else {
-                 // Session is valid
-                 // is it time to update session id ??
-                 if (!isset($_SESSION['last_reg_time']))
-                     self::regenerateId();
-                 else if ($_SESSION['last_reg_time' > time() - 60 * 10]) {
-                     //10 minutes without refreshing page !
-                     self::regenerateId();
-                 }
-                 else
-             }
-         }*/
-            return true;
+            if ($_SESSION['last_activity'] < time() - 60 * 60 * 2) {
+                session_unset();
+                session_destroy();
+                return false;
+            } else {
+                // Session is valid
+                // is it time to update session id ??
+                if (!isset($_SESSION['last_reg_time'])) {
+                    self::regenerateId();
+                } else if ($_SESSION['last_reg_time'] > time() - 60 * 2) {
+                    //10 minutes without refreshing page !
+                    self::regenerateId();
+                }
+            }
         }
+        return true;
     }
-
 
     public static function resetSession($username)
     {
@@ -69,18 +66,16 @@ class Session
         if (session_status() != PHP_SESSION_ACTIVE) {
             session_start();
         }
-        // WARNING: Never use confidential strings for prefix!
-        $newid = session_create_id('ADMIN');
 
-        // Set deleted timestamp. Session data must not be deleted immediately for reasons.
-        $_SESSION['last_reg_time'] = time();
+        //regenrate session id
+        session_regenerate_id(false);
+        
+        // get new session id 
+        $newid = session_id();
 
         // Finish session
         session_commit();
 
-        // Make sure to accept user defined session ID
-        // NOTE: You must enable use_strict_mode for normal operations.
-        ini_set('session.use_strict_mode', 0);
 
         // Set new custom session ID
         session_id($newid);
@@ -88,8 +83,9 @@ class Session
         // Start with custom session ID
         session_start();
 
-        // Make sure use_strict_mode is enabled.
-        // use_strict_mode is mandatory for security reasons.
-        ini_set('session.use_strict_mode', 1);
+        // Set deleted timestamp. Session data must not be deleted immediately for reasons.
+        $_SESSION['last_reg_time'] = time();
+
+
     }
 }
