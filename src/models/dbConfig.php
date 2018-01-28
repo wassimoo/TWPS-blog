@@ -16,9 +16,15 @@ class DB
         $this->username = $username;
     }
 
-    public static function validateConnection($con)
-    {
-
+    public static function setupConnector(){
+        if (!isset($_SESSION["dbc"])) {
+            $port = 3306;
+            $socket = "";
+            $host = "127.0.0.1";
+            $username = "twpsAdmin";
+            $dbname = "twps";
+            $_SESSION["dbc"] = new DB($port, $socket, $host, $username, $dbname);
+        }
     }
 
     /**

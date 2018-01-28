@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- PAGE TITLE -->
+    <title>1325 | Blog</title>
+
+    <!-- META-DATA -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- CSS:: FONTS -->
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS:: BOOTSTRAP -->
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../src/assets/css/main.css">
+
+</head>
+
+<body>
+<div class="m-wrapper m-blog" id="m-wrapper">
+    <div class="m-main_slider">
+        <div class="container m-breadcrumb">
+            <h3>Blog</h3>
+            <div class="m-bread_links">
+                    <a href="../src/index.html">TWPS</a>
+                    <a href="../src/home">Blog</a>
+                    <span>{{title}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="container m-mt90 m-blog_outer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="m-blog_listing m-blog_masonry clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-blog_list_single">
+                        <div class="m-blog_list_img" id="cover">
+                                <img ../src="../src/assets/images/{{banner}}" class="img-responsive" alt="">
+                        </div>
+                        <div class="m-blog_list_details">
+                                <div id="title">
+                                    <h2>{{title}}</h2>
+                                </div>
+                            <div class="m-blog_list_info" id="info">
+                                <span>par {{auth}}</span>
+                                    <span>le {{date}}</span>
+
+                            </div>
+                            <div id="main_text">
+                                   {{content}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                    {% if isAdmin == "true" %}
+                    <button class="faa-parent animated-hover">
+                   Enregistrer
+                </button>
+                {% endif %}
+
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-side_bar">
+                <div class="m-sidebar_single">
+                    <form action="#">
+                        <input type="text" placeholder="Recherche">
+                            <button>
+                                <i class="fa fa-search"></i>
+                            </button>
+                    </form>
+                </div>
+                <div class="m-sidebar_single">
+                    <h4>post récents</h4>
+                    <ul>
+                        {%for article in articles%}
+                            <li>
+                                <a href="#">{{article.nom}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="m-sidebar_single">
+                    <h4>ARCHIVES</h4>
+                    <ul>
+                            <li>
+                                <a href="#">Janvier 2017</a>
+                            </li>
+                            <li>
+                                <a href="#">Févrièr 2017</a>
+                            </li>
+                            <li>
+                                <a href="#">Mars 2017</a>
+                            </li>
+                            <li>
+                                <a href="#">Avril 2017</a>
+                            </li>
+                            <li>
+                                <a href="#">May 2017</a>
+                            </li>
+                            <li>
+                                <a href="#">Juin 2017</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="m-contact">
+        <div class="container">
+            <div class="m-contact_info clearfix">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+                        <form action="#" method="post" id="m-contact_form">
+                            <input type="text" name="name" placeholder="Votre nom" required="">
+                        <input type="email" name="email" placeholder="Email" class="pull-right" required="">
+                            <textarea name="message" placeholder="Commentaire"></textarea>
+                            <button class="faa-parent animated-hover" id="m-submit_form">
+                                <i class="fa fa-envelope faa-shake"></i> send message
+                        </button>
+                    </form>
+                    
+                    <div class="m-msg">
+                            <span class="m-s">Commentaire ajouté </span>
+                            <span class="m-f">Erreur d'ajouter le commentaire</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 pull-right">
+                            <h4>Trouvez nous sur </h4>
+                        <div class="m-social_links">
+                            <a href="#" class="fa fa-facebook" aria-hidden="true"></a>
+                            <a href="#" class="fa fa-twitter" aria-hidden="true"></a>
+                            <a href="#" class="fa fa-pinterest" aria-hidden="true"></a>
+                            <a href="#" class="fa fa-linkedin" aria-hidden="true"></a>
+                            <a href="#" class="fa fa-youtube" aria-hidden="true"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="m-footer">
+        <div class="m-lg_outer m-footer m-mt90">
+            <div class="container text-right">
+                    <p class="m-copyright"> 2018 All rights reserved for AlphaSolutions &copy;</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+{% if  isAdmin == "true" %}
+    <script type="text/javascript" src="../src/assets/js/bundle.min.js"></script>
+{% endif %}
+
+</body>
+
+</html>

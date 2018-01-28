@@ -40,7 +40,8 @@ class Router
         $parsedUrl = parse_url($url);
         $parsedUrl["path"] = ltrim($parsedUrl["path"], "/");
         $parsedUrl["path"] = trim($parsedUrl["path"]);
-        return explode("/", $parsedUrl["path"]);
+        $parsedUrl["path"] = strtolower($parsedUrl["path"]);
+        return preg_split('@/@',$parsedUrl["path"],NULL,PREG_SPLIT_NO_EMPTY);
     }
 
 }

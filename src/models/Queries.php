@@ -21,7 +21,7 @@ class Queries
         }
 
         if (!is_a($dbh, "PDO"))
-            return false;
+            throw new invalidDataException();
 
         $stmt = $dbh->prepare($query);
 

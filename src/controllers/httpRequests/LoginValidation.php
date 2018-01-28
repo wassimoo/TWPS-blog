@@ -22,33 +22,25 @@ class LoginValidation
             return false;
         }
 
-        $port = 3306;
-        $socket = "";
-        $host = "127.0.0.1";
-        $username = "twpsAdmin";
-        $dbname = "twps";
-        $password = "AlphaSolutions1325FreeSight";
+        DB::setupConnector();
 
-        $db = new DB($port, $socket, $host, $username, $dbname);
         try {
-            $dbh = $db->establishConnection($password);
+            $dbh = $_SESSION["dbc"]->establishConnection(PWD);
             $query = "SELECT COUNT(username) AS COUNTS FROM admin WHERE username = ? AND password  = ? ";
             $rows = Queries::performQuery($dbh, $query, array($_POST['id'], $_POST['pwd']), "select");
             $dbh = null;
             if ($rows[0][0] == 1) {
-                $_SESSION["dbc"] = $db;
                 Session::resetSession($_POST['id']);
                 return true;
             } else {
-                $db = null;
                 return false;
             }
         } catch (PDOException $e) {
-            return false;
             error_log("Couldn't connect to database PDOException returned..", 2);
-        } catch (InvalidDataException $e) {
             return false;
+        } catch (InvalidDataException $e) {
             error_log("couldn't continue performing query , Data is invalid ", 1);
+            return false;
         }
     }
 }
