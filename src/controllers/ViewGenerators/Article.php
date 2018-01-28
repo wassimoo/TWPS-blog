@@ -5,10 +5,11 @@ require_once __DIR__ . "/../../models/Queries.php";
 require_once __DIR__ . "/../../models/Session.php";
 require_once __DIR__ . "/../../models/dbConfig.php";
 
+session_start();
+
 //verify DB configuration instance
 DB::setupConnector();
 
-Session::LoadSession();
 
 // create connection instance
 $dbh = $_SESSION["dbc"]->establishConnection(PWD);
@@ -34,7 +35,7 @@ try{
         "isAdmin" => isset($_SESSION["username"]) ? "true" : "false",
         "domain" => "../.."
     );
-    // TODO : add recent posts ; 
+    // TODO : add recent posts ;
     echo TwigLib::bind("article.html",$data);
 }catch (invalidDataException $e){
     //TODO 404.html
