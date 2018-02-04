@@ -11,6 +11,7 @@ button,input,input[type=text],textarea{
 a,body{
     color:#343434
 }
+
 .m-lg_outer,.m-main_slider,.m-wrapper,body{
     position:relative
 }
@@ -118,6 +119,9 @@ p{
 }
 .m-blog_outer .m-blog_list_single .m-blog_list_img{
     overflow:hidden
+}
+.m-blog_list_img{
+    margin-bottom: 40px;
 }
 .m-contact_info{
     margin:50px -15px 30px
@@ -343,6 +347,26 @@ a:hover{
 .m-side_bar form input:focus,input:focus,textarea:focus{
     border-color:#e72138
 }
+
 button:hover{
     background:#e72138
+}
+
+#main_text a{
+    color: #004aff;
+}
+
+#main_text a:hover{
+    color: rgb(249, 0, 112);
+}
+
+#main_text p{
+    font-size: 15px;
+    line-height: 30px;
+}
+
+#title > h2{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

@@ -16,7 +16,7 @@ $(document).ready(function () {
                     if(html != "true")
                         $("#incp").show();
                     else
-                    window.location.replace("home");  
+                    window.location.replace("home");
             }
             });
     });

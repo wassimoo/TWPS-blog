@@ -15,7 +15,7 @@ class LoginValidation
     public static function validate()
     {
         if (Session::LoadSession()) {
-            return true;
+           return true;
         }
 
         if (!isset($_POST['id']) || !isset($_POST['pwd'])) {

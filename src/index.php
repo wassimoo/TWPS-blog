@@ -43,11 +43,14 @@ switch ($tokens[1]) {
     case "articles":
         redirectArticle($tokens);
         return;
+    case "updatecontent":
+        require_once "controllers/httpRequests/updateContent.php";
+        echo updateContent::update()? "true" : "false";
+        break;
     default:
         require_once VIEWS_CTRL_DIR . "Home.php";
         return;
 }
-
 
 /**
  * Login redirection
@@ -84,7 +87,7 @@ function redirectArticle($tokens)
 {
     if (count($tokens) < 3) {
         header("Location: http://localhost/blog/home");
-    } else if (exists($tokens[2] = str_replace('-',' ',$tokens[2]))) {
+    } else if (exists($tokens[2])) {
         $_GET = array("articlePageName" => $tokens[2]);
         require_once VIEWS_CTRL_DIR . "Article.php";
     } else {
@@ -103,7 +106,7 @@ function exists($articleTitle)
 {
     require_once "models/Queries.php";
 
-    $query = "SELECT COUNT(id) FROM article WHERE title = ?";
+    $query = "SELECT COUNT(id) FROM article WHERE id = ?";
     $dbh = $_SESSION["dbc"]->establishConnection(PWD);
 
     try {

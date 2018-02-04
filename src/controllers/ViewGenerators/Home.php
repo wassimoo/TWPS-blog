@@ -10,9 +10,22 @@ require_once __DIR__ . "/../../models/Session.php";
 
 session_start();
 
-    echo "Hello from Home ";
-
+if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["content"]) && isset($_SESSION["coverLink"])) {
+    //User content update was interrupted..
+    //TODO : change to server domain
     if (Session::LoadSession()) {
-        
-        echo "<a href='logout'>you can logout </a>";
+        header("Location: http://localhost/blog/updatecontent");
     }
+    else {
+        echo "you were trying to  submit an article .. contrinue ?";
+    }
+
+    return;
+}
+
+echo "Hello from Home ";
+
+if (Session::LoadSession()) {
+
+    echo "<a href='logout'>you can logout </a>";
+}
