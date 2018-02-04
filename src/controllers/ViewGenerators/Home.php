@@ -10,6 +10,8 @@ require_once __DIR__ . "/../../models/Session.php";
 
 session_start();
 
+// in case of incompleted submission
+/*
 if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["content"]) && isset($_SESSION["coverLink"])) {
     //User content update was interrupted..
     //TODO : change to server domain
@@ -22,7 +24,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["cont
 
     return;
 }
-
+*/
 echo "Hello from Home ";
 
 if (Session::LoadSession()) {
