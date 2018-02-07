@@ -7,6 +7,7 @@
  */
 
 require_once __DIR__ . "/../../models/Session.php";
+require_once __DIR__ . "/../../models/importTwig.php";
 
 session_start();
 
@@ -25,7 +26,8 @@ if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["cont
     return;
 }
 */
-echo "Hello from Home ";
+
+echo TwigLib::bind("home.html",array());
 
 if (Session::LoadSession()) {
 

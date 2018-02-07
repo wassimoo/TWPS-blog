@@ -13,12 +13,12 @@
     <meta name="keywords" content="" />
 
     <!-- CSS:: FONTS -->
-    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="src/assets/css/font-awesome.min.css">
+    <!--<link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet' type='text/css'>-->
 
     <!-- CSS:: BOOTSTRAP -->
-    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="src/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/assets/css/main.css">
 
 </head>
 
@@ -28,52 +28,76 @@
             <div class="container m-breadcrumb">
                 <h3>Blog</h3>
                 <div class="m-bread_links">
-                    <a href="{{domain}}index.html">TWPS</a>
-                    <a href="{{domain}}home">Blog</a>
-                    <span>{{title}}</span>
+                    <a href="../src/index.html">TWPS</a>
+                    <span>Accueill</pan>
                 </div>
             </div>
         </div>
         <div class="container m-mt90 m-blog_outer">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <div class="m-blog_listing m-blog_masonry clearfix" >
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-blog_list_single">
-                            {% if isAdmin == "true" %}
-                            <div class="m-blog_list_img" id="cover" >
-                                <img src="{{banner |raw }}" class="img-responsive">
-                            </div>
-
-                            {% else %}
-                            <div class="m-blog_list_img" >
-                                <img src="{{banner |raw }}" class="img-responsive" id="cover" >
-                            </div>
-
-                            {% endif %}
-                            <div class="m-blog_list_details" style="margin-top: 40px;">
-                                <div id="title" style="text-align: center;">
-                                    <h2 >{{title}}</h2>
-                                </div>
-                                <div class="m-blog_list_info" id="info">
-                                    <span>par {{auth}}</span>
-                                    <span>le {{date}}</span>
-
-                                </div>
-                                <div id="main_text">
-                                    {{content |raw }}
-                                </div>
-                            </div>
-
+                    <div class="m-blog_listing m-blog_masonry clearfix">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m-blog_list_single">
+                        <div class="m-blog_list_img">
+                          <img src="src/assets/images/blog_list_01.jpg" class="img-responsive" alt="">
                         </div>
+                        <div class="m-blog_list_details">
+                          <h3>
+                            <a href="blog_single.html">BLOG TITLE 01</a>
+                          </h3>
+                          <div class="m-blog_list_info">
+                            <span>on: 12-05-2017</span> /
+                            <span>in:
+                              <a href="#">design</a>
+                            </span>
+                          </div>
+                          <p>
+                            The future of development constantly evolves as society grows and adopts different technologies. The introduction of more
+                            technologies allows for a the greater opportunity for creativity and innovation...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m-blog_list_single">
+                        <div class="m-blog_list_img">
+                          <img src="src/assets/images/blog_list_02.jpg" class="img-responsive" alt="">
+                        </div>
+                        <div class="m-blog_list_details">
+                          <h3>
+                            <a href="blog_single.html">BLOG TITLE 02</a>
+                          </h3>
+                          <div class="m-blog_list_info">
+                            <span>on: 12-05-2017</span> /
+                            <span>in:
+                              <a href="#">design</a>
+                            </span>
+                          </div>
+                          <p>
+                            The future of development constantly evolves as society grows and adopts different technologies. The introduction of more
+                            technologies allows for a the greater opportunity for creativity and innovation...
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    {% if isAdmin == "true" %}
-
-                    <button class="faa-parent animated-hover" id="saveContent">
-                        Enregistrer
-                    </button>
-                    {% endif %}
-
-                </div>
+                    <div class="m-pagination">
+                      <ul>
+                        <li>
+                          <a href="#" class = "fa fa-arrow-left"></a>
+                        </li>
+                        <li>
+                          <a href="#">1</a>
+                        </li>
+                        <li>
+                          <a href="#">2</a>
+                        </li>
+                        <li>
+                          <a href="#">3</a>
+                        </li>
+                        <li>
+                          <a href="#" class = "fa fa-arrow-right"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-side_bar">
                     <div class="m-sidebar_single">
@@ -123,23 +147,6 @@
         <section id="m-contact">
             <div class="container">
                 <div class="m-contact_info clearfix">
-                    {% if isAdmin != "true" %}
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
-                        <form action="#" method="post" id="m-contact_form">
-                            <input type="text" name="name" placeholder="Votre nom" required="">
-                            <input type="email" name="email" placeholder="Email" class="pull-right" required="">
-                            <textarea name="message" placeholder="Commentaire"></textarea>
-                            <button class="faa-parent animated-hover" id="m-submit_form">
-                                <i class="fa fa-envelope faa-shake"></i> Commenter
-                            </button>
-                        </form>
-
-                        <div class="m-msg">
-                            <span class="m-s">Commentaire ajouté </span>
-                            <span class="m-f">Erreur d'ajouter le commentaire</span>
-                        </div>
-                    </div>
-                    {% endif %}
 
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-right">
                         <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 pull-right">
@@ -155,22 +162,17 @@
             </div>
         </section>
         <footer id="m-footer">
-            <div class="m-lg_outer m-footer m-mt90">
+            <div class="m-lg_outer m-footer m-mt90" style="margin-top: 60px;">
                 <div class="container text-right">
                     <p class="m-copyright"> 2018 All rights reserved for AlphaSolutions &copy;</p>
                 </div>
             </div>
         </footer>
-
     </div>
 
-    <script type="text/javascript" src="{{domain}}assets/js/bundle.min.js"></script> {% if isAdmin != "true" %}
-    <script>
-        for (var i = 0; i < window.Editor.length; i++)
-            window.Editor[i].isReadOnly = true;
-    </script> {% else %}
-    <script type="text/javascript" src="{{domain}}assets/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="{{domain}}assets/js/admin/admin.js"></script> {% endif %}
+
+    <script type="text/javascript" src="src/assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="src/assets/js/admin/admin.js"></script> 
 
 </body>
 

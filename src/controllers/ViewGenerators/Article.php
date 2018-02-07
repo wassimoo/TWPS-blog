@@ -34,7 +34,7 @@ try{
         "banner" => $banner,
         "content" => $content,
         "isAdmin" => isset($_SESSION["username"]) ? "true" : "false",
-        "domain" => "../.."
+        "domain" => "http://localhost/blog/src/"
     );
     // TODO : add recent posts ;
     echo TwigLib::bind("article.html",$data);

@@ -24,12 +24,13 @@ if (!isset($_SESSION["dbc"])) {
 
 //dispatch query
 $tokens = $_SESSION["router"]->dispatch(array($_SERVER['REQUEST_URI']));
+if(count($tokens) <= 1){
+    require_once VIEWS_CTRL_DIR . "Home.php";
+    return;
+}
 
 //take the proper action
 switch ($tokens[1]) {
-    case "home":
-        require_once VIEWS_CTRL_DIR . "Home.php";
-        return;
     case "login":
         redirectLogin();
         return;
@@ -47,6 +48,10 @@ switch ($tokens[1]) {
         require_once "controllers/httpRequests/updateContent.php";
         echo updateContent::update()? "true" : "false";
         break;
+    case "new":
+        require_once VIEWS_CTRL_DIR . "newArticle.php";
+        break;
+case "home":
     default:
         require_once VIEWS_CTRL_DIR . "Home.php";
         return;

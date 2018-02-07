@@ -43,13 +43,13 @@ class updateContent
             if ($rows[0][0] != 1) {
                 //insert new article ;
                 $query = "INSERT INTO article(id,content,admin_username,title,banner_link) values(?,?,?,?,?)";
-                $data = array($_SESSION["id"], $_SESSION["content"], $_SESSION["username"], $_SESSION["title"], $_SESSION["cover_link"]);
-                return Queries::performQuery($dbh, $query, $data, "insert");
+                $data = array($_SESSION["id"], $_SESSION["content"], $_SESSION["username"], $_SESSION["title"], $_SESSION["coverLink"]);
+                $type = "insert";
             } else {
                 //update article ;
                 $query = "UPDATE twps.article SET content = ?, title= ?, banner_link= ? WHERE id = ?";
                 $data = array($_SESSION["content"], $_SESSION["title"], $_SESSION["coverLink"], $_SESSION["id"]);
-                return Queries::performQuery($dbh, $query, $data, "update");
+                $type = "update";
             }
             unset($_SESSION["id"]);
             unset($_POST["id"]);
@@ -59,6 +59,8 @@ class updateContent
             unset($_POST["content"]);
             unset($_SESSION["coverLink"]);
             unset($_POST["cover"]);
+            return Queries::performQuery($dbh, $query, $data, $type);
+            
         } catch (PDOException $e) {
             error_log("Couldn't connect to database PDOException returned..", 2);
             return false;
