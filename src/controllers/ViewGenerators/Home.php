@@ -27,6 +27,18 @@ if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["cont
 }
 */
 
+
+//verify DB configuration instance
+DB::setupConnector();
+
+
+// create connection instance
+$dbh = $_SESSION["dbc"]->establishConnection(PWD);
+
+//TODO : continue from here ! 
+
+$query = "SELECT coun FROM article order by creation_date desc LIMIT 0,3" ;
+
 echo TwigLib::bind("home.html",array());
 
 if (Session::LoadSession()) {

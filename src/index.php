@@ -38,6 +38,10 @@ switch ($tokens[1]) {
         require_once "controllers/httpRequests/LoginValidation.php";
         echo LoginValidation::validate() ? "true" : "false";
         return;
+    case "bloglist":
+        require_once "controllers/httpRequests/BlogList.php";
+        echo BList::get();
+        return;
     case "logout":
         require_once "controllers/httpRequests/Logout.php";
         return;

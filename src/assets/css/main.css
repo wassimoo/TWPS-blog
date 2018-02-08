@@ -146,6 +146,12 @@ p{
     overflow:hidden
 }
 
+.m-blog_list_img img{
+    width: 100%;
+    height: 100%;
+}
+
+
 .m-contact_info{
     margin:50px -15px 30px
 }

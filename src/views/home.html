@@ -37,61 +37,19 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="m-blog_listing m-blog_masonry clearfix">
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m-blog_list_single">
-                        <div class="m-blog_list_img">
-                          <img src="src/assets/images/blog_list_01.jpg" class="img-responsive" alt="">
-                        </div>
-                        <div class="m-blog_list_details">
-                          <h3>
-                            <a href="blog_single.html">BLOG TITLE 01</a>
-                          </h3>
-                          <div class="m-blog_list_info">
-                            <span>on: 12-05-2017</span> /
-                            <span>in:
-                              <a href="#">design</a>
-                            </span>
-                          </div>
-                          <p>
-                            The future of development constantly evolves as society grows and adopts different technologies. The introduction of more
-                            technologies allows for a the greater opportunity for creativity and innovation...
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m-blog_list_single">
-                        <div class="m-blog_list_img">
-                          <img src="src/assets/images/blog_list_02.jpg" class="img-responsive" alt="">
-                        </div>
-                        <div class="m-blog_list_details">
-                          <h3>
-                            <a href="blog_single.html">BLOG TITLE 02</a>
-                          </h3>
-                          <div class="m-blog_list_info">
-                            <span>on: 12-05-2017</span> /
-                            <span>in:
-                              <a href="#">design</a>
-                            </span>
-                          </div>
-                          <p>
-                            The future of development constantly evolves as society grows and adopts different technologies. The introduction of more
-                            technologies allows for a the greater opportunity for creativity and innovation...
-                          </p>
-                        </div>
-                      </div>
+                    
+                     
                     </div>
                     <div class="m-pagination">
                       <ul>
                         <li>
                           <a href="#" class = "fa fa-arrow-left"></a>
                         </li>
+                        {% for i in 1 .. article.numPages+1 %}
                         <li>
-                          <a href="#">1</a>
+                          <a href="#" class="nav" id="{{i}}">{{i}}</a>
                         </li>
-                        <li>
-                          <a href="#">2</a>
-                        </li>
-                        <li>
-                          <a href="#">3</a>
-                        </li>
+                        {% endfor %}
                         <li>
                           <a href="#" class = "fa fa-arrow-right"></a>
                         </li>
@@ -172,7 +130,10 @@
 
 
     <script type="text/javascript" src="src/assets/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="src/assets/js/admin/admin.js"></script> 
+    <script = type="text/javascript" src="src/assets/js/home.js"></script>
+    {% if isAdmin == "true" %}
+    <script type="text/javascript" src="src/assets/js/admin/admin.js"></script>
+    {% endif %}
 
 </body>
 
