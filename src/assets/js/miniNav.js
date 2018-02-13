@@ -114,7 +114,7 @@ jQuery(document).ready(function($)
 		var tm3 = TweenMax.to(fsMenu, 0.2, {x:-700, ease: Circ.easeOut});
 		var tm4 = TweenMax.set(menuItemsContainer, {css:{"pointer-events":"auto"}});
 		var tm5 = TweenMax.staggerTo(menuItems, 0.4, {x:0, autoAlpha:1, ease:Back.easeOut.config(1.4), delay:0.2}, 0.06);
-
+		$(".fs_menu_items").css({"display":""});
 		menuActive = true;
 	}
 
@@ -123,6 +123,7 @@ jQuery(document).ready(function($)
 		var tm6 = TweenMax.staggerTo(menuItems, 0.4, {x:550, autoAlpha:0, ease: Circ.easeOut}, 0.06);
 		var tm7 = TweenMax.to(fsMenu, 0.2, {x:650, delay:0.2, ease: Circ.easeOut});
 		var tm8 = TweenMax.to(fsOverlay, 0.2, {css:{'background':"rgba(255,255,255,0)",'pointer-events':"none"}, delay:0.3});
+		$(".fs_menu_items").css({"display":"none"});
 
 		menuActive = false;
 	}
