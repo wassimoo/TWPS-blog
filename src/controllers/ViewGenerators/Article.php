@@ -33,7 +33,7 @@ try{
         "date" => $date,
         "banner" => $banner,
         "content" => $content,
-        "isAdmin" => isset($_SESSION["username"]) ? "true" : "false",
+        "isAdmin" => Session::LoadSession() ? "true" : "false",
         "domain" => "http://localhost/blog/src/"
     );
     // TODO : add recent posts ;

@@ -8,8 +8,10 @@
 
 require_once __DIR__ . "/../../models/Session.php";
 require_once __DIR__ . "/../../models/importTwig.php";
+require_once __DIR__ . "/../../models/Queries.php";
 
 session_start();
+
 
 // in case of incompleted submission
 /*
@@ -32,16 +34,16 @@ if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["cont
 DB::setupConnector();
 
 
-// create connection instance
+// create connection instancee7lef
 $dbh = $_SESSION["dbc"]->establishConnection(PWD);
+$query = "SELECT ceil(count(id) / ?) FROM article";
+$rows = Queries::performQuery($dbh, $query, array(LIST_CAPACITY), "select");
 
-//TODO : continue from here ! 
 
-$query = "SELECT coun FROM article order by creation_date desc LIMIT 0,3" ;
-
-echo TwigLib::bind("home.html",array());
-
-if (Session::LoadSession()) {
-
-    echo "<a href='logout'>you can logout </a>";
-}
+$dbh = null;
+$data = array(
+    'isAdmin' => Session::LoadSession() ? "true" : "false" ,
+    'domain' => "http://localhost/blog/src/",
+    'numPages' => $rows[0][0] 
+);
+echo TwigLib::bind("home.html",$data);

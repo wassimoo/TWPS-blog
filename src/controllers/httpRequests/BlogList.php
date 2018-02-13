@@ -4,21 +4,22 @@ require_once __DIR__ . "/../../models/dbConfig.php";
 require_once __DIR__ . "/../../models/Queries.php";
 require_once __DIR__ . "/../../models/Session.php";
 
+
 session_start();
 
 class BList
 {
     public static function get()
     {
-        $page = isset($_SESSION["page"]) ? $_SESSION["page"] : 0;
-        $to = $page  + 7;
-        $blogList;
+        $from = ((isset($_POST["page"]) && $_POST["page"] != 1) ? $_POST["page"] + LIST_CAPACITY -1  : 0) ;
+        $to = $from  + LIST_CAPACITY;
+        $blogList = "";
         try {
             DB::setupConnector();
             $query = "SELECt id,title,banner_link,creation_date FROM twps.article order by creation_date desc LIMIT ?,?";
             // create connection instance
             $dbh = $_SESSION["dbc"]->establishConnection(PWD);
-            $rows = Queries::performQuery($dbh, $query, array($page,$to), "select");
+            $rows = Queries::performQuery($dbh, $query, array($from,$to), "select");
             foreach ($rows as $row) {
                 $img = $row["banner_link"];
                 $title = $row["title"];
@@ -28,7 +29,9 @@ class BList
                  $blogList .= 
                 sprintf('<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m-blog_list_single">
                         <div class="m-blog_list_img" style=" height: 200.562px;">
-                          <img src="%s" class="img-responsive" alt="">
+                        <a href="articles/%s">
+                            <img src="%s" class="img-responsive" alt="">
+                        </a>
                         </div>
                         <div class="m-blog_list_details">
                           <h3>
@@ -38,7 +41,7 @@ class BList
                             <span>Le: %s </span>
                           </div>
                         </div>
-                </div>',$img,$id,$title,$date);
+                </div>',$id,$img,$id,$title,$date);
             }
         } catch (PDOException $e) {
             error_log("Couldn't connect to database PDOException returned..", 2);

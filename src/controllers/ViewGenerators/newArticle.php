@@ -22,7 +22,7 @@
         $auth = $rows[0]["last_name"]. " " . $rows[0]["name"];
         $banner = DEFAULT_BANNER;
         $content = "Le contenu de blog va se rendre içi";
-        $title = "Titre ";
+        $title = "Nouvel article";
         $date =  date('d-m-Y à H')."h";
         $data = array(
         "title" => $title,
