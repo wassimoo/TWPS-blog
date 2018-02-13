@@ -404,3 +404,79 @@ button:hover{
 .nav.active{
     color : #e72138!important;
 }
+
+/* Loading spinner */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300");
+.parent{
+    display:none;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    text-align: center;
+    color : #e72138!important;  
+}
+.parent h6{
+    margin-top: 25px;
+}
+.parent .ball {
+
+  width: 1em;
+  height: 1em;
+  margin: 0 auto;
+  border-radius: 1em;
+  background: #e72138;
+  -webkit-animation: load 2000ms linear infinite;
+  -moz-animation: load 2000ms linear infinite;
+  animation: load 2000ms linear infinite;
+}
+@-webkit-keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@-webkit-keyframes load {
+  0%, 100% {
+    -webkit-transform: scale(1) translateX(0);
+    transform: scale(1) translateX(0);
+  }
+  25% {
+    -webkit-transform: scale(0.25) translateX(-6.5em);
+    transform: scale(0.25) translateX(-6.5em);
+  }
+  50% {
+    -webkit-transform: scale(0.15) translateX(0);
+    transform: scale(0.15) translateX(0);
+  }
+  75% {
+    -webkit-transform: scale(0.25) translateX(6.5em);
+    transform: scale(0.25) translateX(6.5em);
+  }
+}
+@keyframes load {
+  0%, 100% {
+    -webkit-transform: scale(1) translateX(0);
+    transform: scale(1) translateX(0);
+  }
+  25% {
+    -webkit-transform: scale(0.25) translateX(-6.5em);
+    transform: scale(0.25) translateX(-6.5em);
+  }
+  50% {
+    -webkit-transform: scale(0.15) translateX(0);
+    transform: scale(0.15) translateX(0);
+  }
+  75% {
+    -webkit-transform: scale(0.25) translateX(6.5em);
+    transform: scale(0.25) translateX(6.5em);
+  }
+}

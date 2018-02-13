@@ -26,7 +26,7 @@ class updateContent
             } else {
                 $_POST["title"] = trim(preg_replace('/\s+/', ' ',$_POST["title"]));
                 //if http origins is new , ignore given id ; 
-                //TODO : replace with server domain
+                //TODO: replace with server domain
                 $_SESSION["id"] = $_SERVER["HTTP_REFERER"] == "http://localhost/blog/new" ? str_replace(' ','-',strtolower($_POST["title"])) :  $_POST["id"];
                 $_SESSION["title"] = $_POST["title"];
                 $_SESSION["content"] = $_POST["content"];
