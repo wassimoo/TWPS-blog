@@ -2,4 +2,4 @@
 /.idea
 /node_modules
 /src/assets/images
-/dist/assets/images
+src/gen.sql
