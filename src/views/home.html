@@ -13,23 +13,125 @@
     <meta name="keywords" content="" />
 
     <!-- CSS:: FONTS -->
-    <link rel="stylesheet" type="text/css" href="src/assets/css/font-awesome.min.css">
-    <!--<link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet' type='text/css'>
 
     <!-- CSS:: BOOTSTRAP -->
-    <link rel="stylesheet" type="text/css" href="src/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="src/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/main.css">
+
+    {% if isAdmin == "true" %}
+        <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/admin/admin.css">
+    {% endif %}
+
 
 </head>
 
 <body>
+
+    <!-- Header -->
+
+    <header class="header">
+        <div class="header_inner">
+            <div class="hamburger_container">
+                <div class="hamburger">
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                    <div class="hamburger_dot"></div>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html" class="text-menu-font">Acceuill</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-menu-font">Initiative</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-menu-font">Formation</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-menu-font">Séminaire</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-menu-font">Table Ronde</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-menu-font">Activité</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="fs_menu_overlay"></div>
+    <div class="fs_menu_container"></div>
+    <div class="fs_close_container menu_item">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    </div>
+    <div class="fs_menu_items">
+        <ul>
+            <li class="menu_item">
+                <a href="index.html" class="nav_links" data-scroll-to=".about_section">Acceuill</a>
+            </li>
+            <li class="menu_item">
+                <a href="#" class="nav_links" data-scroll-to=".works_section" style="opacity : 0.5;">Initiative</a>
+            </li>
+            <li class="menu_item">
+                <a href="#" class="nav_links" data-scroll-to=".services_section">Formation</a>
+            </li>
+            <li class="menu_item">
+                <a href="#" class="nav_links" data-scroll-to=".team_section">Table Ronde</a>
+            </li>
+            <li class="menu_item">
+                <a href="#" class="nav_links" data-scroll-to=".news_section">Activité</a>
+            </li>
+            <li class="menu_item">
+                <a href="contact.html">Contact</a>
+            </li>
+        </ul>
+        <div class="fs_menu_line menu_item"></div>
+        <div class="clear"></div>
+        <div class="fs_social menu_item">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
     <div class="m-wrapper m-blog" id="m-wrapper">
         <div class="m-main_slider">
             <div class="container m-breadcrumb">
                 <h3>Blog</h3>
                 <div class="m-bread_links">
-                    <a href="../src/index.html">TWPS</a>
-                    <span>Accueill</pan>
+                    <a href="http://www.twps1325.com">TWPS</a>
+                    <span>Accueill</span>
                 </div>
             </div>
         </div>
@@ -37,25 +139,23 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="m-blog_listing m-blog_masonry clearfix">
-                    
-                     
                     </div>
-                    <div class="m-pagination">
-                      <ul>
-                        <li>
-                          <a href="#" class = "fa fa-arrow-left"></a>
-                        </li>
-                        {% for i in 1 .. article.numPages+1 %}
-                        <li>
-                          <a href="#" class="nav" id="{{i}}">{{i}}</a>
-                        </li>
-                        {% endfor %}
-                        <li>
-                          <a href="#" class = "fa fa-arrow-right"></a>
-                        </li>
-                      </ul>
+                    <div class="m-pagination" style="margin-bottom:30px;">
+                        <ul>
+                            <li>
+                                <a href="javascript: void(0)" class="fa fa-arrow-left"></a>
+                            </li>
+                            {% for i in 1 .. numPages %}
+                            <li>
+                                <a href="#" class="nav" id="{{i}}">{{i}}</a>
+                            </li>
+                            {% endfor %}
+                            <li>
+                                <a href="javascript: void(0)" class="fa fa-arrow-right"></a>
+                            </li>
+                        </ul>
                     </div>
-                  </div>
+                </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 m-side_bar">
                     <div class="m-sidebar_single">
@@ -71,7 +171,7 @@
                         <ul>
                             {%for article in articles%}
                             <li>
-                                <a href="#">{{article.nom}}</a>
+                                <a href="javascript: void(0)">{{article.nom}}</a>
                             </li>
                             {% endfor %}
                         </ul>
@@ -126,14 +226,52 @@
                 </div>
             </div>
         </footer>
-    </div>
+        
+        {% if isAdmin == "true" %}
+
+        <div class="parent2">
+            <div class="logout">
+                <a href="http://localhost/blog/logout">
+                    <i class="fa fa-sign-out fa-2x"></i>
+                </a>
+            </div>
+            <div class="med">
+                <a href="http://localhost/blog/medias">
+                    <i class="fa fa-film fa-2x"></i>
+                </a>
+            </div>
+            <div class="new">
+                <a href="http://localhost/blog/new">
+                    <i class="fa fa-pencil-square-o fa-2x"></i>
+                </a>
+            </div>
+            <div class="upload">
+                <a href="http://localhost/blog/upload">
+                    <i class="fa fa-plus fa-2x"></i>
+                </a>
+            </div>
+
+            <div class="mask2">
+                <i class="fa fa-user fa-3x"></i>
+            </div>
+        </div>
+        
+        {% endif %}
 
 
-    <script type="text/javascript" src="src/assets/js/jquery-3.2.1.min.js"></script>
-    <script = type="text/javascript" src="src/assets/js/home.js"></script>
-    {% if isAdmin == "true" %}
-    <script type="text/javascript" src="src/assets/js/admin/admin.js"></script>
-    {% endif %}
+        <script type="text/javascript" src="{{domain}}assets/js/jquery-3.2.1.min.js"></script>
+
+        <!-- Navigation srcipts -->
+        <script type="text/javascript" src="{{domain}}assets/js/TweenMax.min.js"></script>
+        <script type="text/javascript" src="{{domain}}assets/js/ScrollMagic.min.js"></script>
+        <script type="text/javascript" src="{{domain}}assets/js/miniNav.js"></script>
+        
+        <!-- home http requests -->
+         <script type="text/javascript" src="{{domain}}assets/js/home.js"></script>
+
+        {% if isAdmin == "true" %}
+            <script type="text/javascript" src="{{domain}}assets/js/admin/admin.js"></script> 
+        {% endif %}
 
 </body>
 
