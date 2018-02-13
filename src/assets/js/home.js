@@ -1,21 +1,25 @@
 
 $(document).ready(function () {
+   
+    var tabs = $('.m-pagination li').length-2;
     var active = null;
+    var activeId = null;
+   
     function fetchData() {
         $(".m-blog_listing").css({"display":"none"});
         $(".parent").css({"display":"block"});
-        var pageNum = this.id ? this.id : 1;
+        activeId = this.id ? this.id : 1;
         if(active)
             $(active).attr("class","nav");
 
-        active = $("#"+pageNum);
+        active = $("#"+activeId);
         $(active).attr("class","nav active");
 
         $.ajax({
             type: "POST",
             url: "bloglist",
             data: {
-                page: pageNum
+                page: activeId
             },
             dataType: "html",
             success: function (html) {
@@ -30,6 +34,23 @@ $(document).ready(function () {
             }
         })
     }
-    fetchData();
+
+
     $(document).on("click", ".nav", fetchData);
+    $(".fa-arrow-right").click(function(){
+        if(parseInt(activeId) >= tabs)
+            return; 
+        var next = $("#"+ (++activeId));
+        next.click();
+    });
+
+    $(".fa-arrow-left").click(function(){
+        if(parseInt(activeId) == "1")
+            return;
+        var prev = $("#"+ (--activeId));
+        prev.click();
+    });
+
+
+    fetchData();
 });
