@@ -5,7 +5,7 @@ require_once "models/Session.php";
 
 define("VIEWS_CTRL_DIR", "controllers/ViewGenerators/");
 define("PWD", "AlphaSolutions1325FreeSight");
-
+define ("LIST_CAPACITY",4);
 
 // Verify router singleton instantiation
 if (!isset($_SESSION["router"])) {
