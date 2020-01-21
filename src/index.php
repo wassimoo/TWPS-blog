@@ -4,7 +4,7 @@ require_once "models/dbConfig.php";
 require_once "models/Session.php";
 
 define("VIEWS_CTRL_DIR", "controllers/ViewGenerators/");
-define("PWD", "AlphaSolutions1325FreeSight");
+define("PWD", "");
 define ("LIST_CAPACITY",4);
 
 // Verify router singleton instantiation
@@ -17,8 +17,8 @@ if (!isset($_SESSION["dbc"])) {
     $port = 3306;
     $socket = "";
     $host = "127.0.0.1";
-    $username = "twpsAdmin";
-    $dbname = "twps";
+    $username = "root";
+    $dbname = "blog";
     $_SESSION["dbc"] = new DB($port, $socket, $host, $username, $dbname);
 }
 

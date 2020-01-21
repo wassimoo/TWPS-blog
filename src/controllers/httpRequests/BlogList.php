@@ -16,7 +16,7 @@ class BList
         $blogList = "";
         try {
             DB::setupConnector();
-            $query = "SELECt id,title,banner_link,creation_date FROM twps.article order by creation_date desc LIMIT ?,?";
+            $query = "SELECt id,title,banner_link,creation_date FROM blog.article order by creation_date desc LIMIT ?,?";
             // create connection instance
             $dbh = $_SESSION["dbc"]->establishConnection(PWD);
             $rows = Queries::performQuery($dbh, $query, array($from,$to), "select");

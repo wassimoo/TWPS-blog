@@ -26,7 +26,7 @@ class LoginValidation
 
         try {
             $dbh = $_SESSION["dbc"]->establishConnection(PWD);
-            $query = "SELECT COUNT(username) AS COUNTS FROM admin WHERE username = ? AND password  = ? ";
+            $query = "SELECT COUNT(username) AS COUNTS FROM blog.admin WHERE username = ? AND password  = ? ";
             $rows = Queries::performQuery($dbh, $query, array($_POST['id'], $_POST['pwd']), "select");
             $dbh = null;
             if ($rows[0][0] == 1) {

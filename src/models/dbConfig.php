@@ -21,8 +21,8 @@ class DB
             $port = 3306;
             $socket = "";
             $host = "127.0.0.1";
-            $username = "twpsAdmin";
-            $dbname = "twps";
+            $username = "root";
+            $dbname = "blog";
             $_SESSION["dbc"] = new DB($port, $socket, $host, $username, $dbname);
         }
     }

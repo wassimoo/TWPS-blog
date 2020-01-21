@@ -16,7 +16,7 @@ $dbh = $_SESSION["dbc"]->establishConnection(PWD);
 
 try{
     $query = "SELECT article.*, name, last_name FROM article 
-              INNER JOIN twps.admin ON admin.username LIKE article.admin_username
+              INNER JOIN blog.admin ON admin.username LIKE article.admin_username
               WHERE id =  ? ";
     $rows = Queries::performQuery($dbh,$query,array($_GET["articlePageName"]),"select");
 

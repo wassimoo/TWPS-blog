@@ -50,7 +50,7 @@ class updateContent
                 $type = "insert";
             }else {
                 //update article ;
-                $query = "UPDATE twps.article SET content = ?, title= ?, banner_link= ? WHERE id = ?";
+                $query = "UPDATE blog.article SET content = ?, title= ?, banner_link= ? WHERE id = ?";
                 $data = array($_SESSION["content"], $_SESSION["title"], $_SESSION["coverLink"], $_SESSION["id"]);
                 $type = "update";
             }
