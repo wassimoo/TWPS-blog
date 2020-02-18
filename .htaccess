@@ -1,8 +1,7 @@
 Options +FollowSymLinks
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteRule ^(.*)$ src/index.php [NC,L]
+RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.css|\.js)$
+RewriteRule ^(.*)$ src/index.php [QSA]
 
 ErrorDocument 400 400.html
 

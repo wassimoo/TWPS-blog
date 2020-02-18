@@ -10,7 +10,6 @@ require_once __DIR__ . "/../../models/Session.php";
 require_once __DIR__ . "/../../models/importTwig.php";
 require_once __DIR__ . "/../../models/Queries.php";
 
-session_start();
 
 
 // in case of incompleted submission
@@ -19,7 +18,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["title"]) && isset($_SESSION["cont
     //User content update was interrupted..
     //TODO : change to server domain
     if (Session::LoadSession()) {
-        header("Location: http://localhost/blog/updatecontent");
+        header("Location: http://localhost/updatecontent");
     }
     else {
         echo "you were trying to  submit an article .. contrinue ?";
@@ -43,7 +42,7 @@ $rows = Queries::performQuery($dbh, $query, array(LIST_CAPACITY), "select");
 $dbh = null;
 $data = array(
     'isAdmin' => Session::LoadSession() ? "true" : "false" ,
-    'domain' => "http://localhost/blog/src/",
+    'domain' => "http://localhost/src/",
     'numPages' => $rows[0][0] 
 );
 echo TwigLib::bind("home.html",$data);

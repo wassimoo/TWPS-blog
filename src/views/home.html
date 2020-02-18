@@ -21,9 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/nav.css">
     <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/main.css">
 
-    {% if isAdmin == "true" %}
         <link rel="stylesheet" type="text/css" href="{{domain}}assets/css/admin/admin.css">
-    {% endif %}
 
 
 </head>
@@ -34,20 +32,6 @@
 
     <header class="header">
         <div class="header_inner">
-            <div class="hamburger_container">
-                <div class="hamburger">
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                    <div class="hamburger_dot"></div>
-                </div>
-            </div>
-
             <nav>
                 <ul>
                     <li>
@@ -188,22 +172,22 @@
 
         <div class="parent2">
             <div class="logout">
-                <a href="http://localhost/blog/logout">
+                <a href="http://localhost/logout">
                     <i class="fa fa-sign-out fa-2x"></i>
                 </a>
             </div>
             <div class="med">
-                <a href="http://localhost/blog/medias">
+                <a href="http://localhost/medias">
                     <i class="fa fa-film fa-2x"></i>
                 </a>
             </div>
             <div class="new">
-                <a href="http://localhost/blog/new">
+                <a href="http://localhost/new">
                     <i class="fa fa-pencil-square-o fa-2x"></i>
                 </a>
             </div>
             <div class="upload">
-                <a href="http://localhost/blog/upload">
+                <a href="http://localhost/upload">
                     <i class="fa fa-plus fa-2x"></i>
                 </a>
             </div>
@@ -214,54 +198,6 @@
         </div>
         
         {% endif %}
-        <div class="fs_menu_overlay"></div>
-        <div class="fs_menu_container"></div>
-        <div class="fs_close_container menu_item">
-            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-        </div>
-        <div class="fs_menu_items">
-            <ul>
-                <li class="menu_item">
-                    <a href="index.html" class="nav_links" data-scroll-to=".about_section">Acceuill</a>
-                </li>
-                <li class="menu_item">
-                    <a href="#" class="nav_links" data-scroll-to=".works_section" style="opacity : 0.5;">Initiative</a>
-                </li>
-                <li class="menu_item">
-                    <a href="#" class="nav_links" data-scroll-to=".services_section">Formation</a>
-                </li>
-                <li class="menu_item">
-                    <a href="#" class="nav_links" data-scroll-to=".team_section">Table Ronde</a>
-                </li>
-                <li class="menu_item">
-                    <a href="#" class="nav_links" data-scroll-to=".news_section">Activité</a>
-                </li>
-                <li class="menu_item">
-                    <a href="contact.html">Contact</a>
-                </li>
-            </ul>
-            <div class="fs_menu_line menu_item"></div>
-            <div class="clear"></div>
-            <div class="fs_social menu_item">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-pinterest" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <script type="text/javascript" src="{{domain}}assets/js/jquery-3.2.1.min.js"></script>
 

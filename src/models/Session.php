@@ -26,7 +26,9 @@ class Session
 
     public static function LoadSession()
     {
-        session_start();
+        if(!isset($_SESSION)) {
+            session_start();
+        }
 
         if (!isset($_SESSION['last_activity']) || !isset($_SESSION['last_reg_time']) || !isset($_SESSION['username']) || !isset($_SESSION["dbc"]))
         {

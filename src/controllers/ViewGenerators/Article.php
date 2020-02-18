@@ -5,7 +5,6 @@ require_once __DIR__ . "/../../models/Queries.php";
 require_once __DIR__ . "/../../models/Session.php";
 require_once __DIR__ . "/../../models/dbConfig.php";
 
-session_start();
 
 //verify DB configuration instance
 DB::setupConnector();
@@ -34,7 +33,7 @@ try{
         "banner" => $banner,
         "content" => $content,
         "isAdmin" => Session::LoadSession() ? "true" : "false",
-        "domain" => "http://localhost/blog/src/"
+        "domain" => "http://localhost/src/"
     );
     // TODO : add recent posts ;
     echo TwigLib::bind("article.html",$data);

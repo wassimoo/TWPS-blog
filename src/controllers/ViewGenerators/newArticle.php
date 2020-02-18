@@ -6,12 +6,10 @@
     require_once __DIR__ . "/../../models/Queries.php";
 
     define("DEFAULT_BANNER","banners/default.jpg");
-    session_start();
     
     if(!session::LoadSession()){
-        header("Location: http://localhost/blog/login");
-        //TODO : replace with server url;
-                return;
+        header("Location: http://localhost/login");
+        return;
     }
 
     $dbh = $_SESSION["dbc"]->establishConnection(PWD);
@@ -28,10 +26,10 @@
         "title" => $title,
         "auth" =>  $auth,
         "date" => $date,
-        "banner" => "http://localhost/blog/src/assets/images/".$banner,
+        "banner" => "http://localhost/src/assets/images/".$banner,
         "content" => $content,
         "isAdmin" => isset($_SESSION["username"]) ? "true" : "false",
-        "domain" => "http://localhost/blog/src/"
+        "domain" => "http://localhost/src/"
     );
         echo TwigLib::bind("article.html",$data);
     }catch (invalidDataException $e){

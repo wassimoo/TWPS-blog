@@ -5,8 +5,6 @@ require_once __DIR__ . "/../../models/Queries.php";
 require_once __DIR__ . "/../../models/Session.php";
 
 
-session_start();
-
 class BList
 {
     public static function get()

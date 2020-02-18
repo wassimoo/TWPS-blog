@@ -3,12 +3,15 @@ require_once "controllers/Router.php";
 require_once "models/dbConfig.php";
 require_once "models/Session.php";
 
+
 define("VIEWS_CTRL_DIR", "controllers/ViewGenerators/");
 define("PWD", "");
 define ("LIST_CAPACITY",4);
 
+session_start();
+
 // Verify router singleton instantiation
-if (!isset($_SESSION["router"])) {
+if (!isset($_SESSION["router"])){
     $_SESSION["router"] = Router::getInstance();
 }
 
@@ -22,15 +25,17 @@ if (!isset($_SESSION["dbc"])) {
     $_SESSION["dbc"] = new DB($port, $socket, $host, $username, $dbname);
 }
 
+
 //dispatch query
 $tokens = $_SESSION["router"]->dispatch(array($_SERVER['REQUEST_URI']));
-if(count($tokens) <= 1){
+
+if(count($tokens) == 0){
     require_once VIEWS_CTRL_DIR . "Home.php";
     return;
 }
 
 //take the proper action
-switch ($tokens[1]) {
+switch ($tokens[0]) {
     case "login":
         redirectLogin();
         return;
@@ -95,7 +100,7 @@ function redirectLogin()
 function redirectArticle($tokens)
 {
     if (count($tokens) < 3) {
-        header("Location: http://localhost/blog/home");
+        header("Location: http://localhost/home");
     } else if (exists($tokens[2])) {
         $_GET = array("articlePageName" => $tokens[2]);
         require_once VIEWS_CTRL_DIR . "Article.php";
