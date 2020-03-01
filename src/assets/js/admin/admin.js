@@ -31,7 +31,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             //TODO : change to server url;
-            url: "http://localhost/blog/updatecontent",
+            url: "http://localhost/updatecontent",
             data: {
                 id: id,
                 title: title,
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 if (html == "true")
                     location.reload(true);
                 else {
-                    window.location.replace("http://localhost/blog/login");
+                    window.location.replace("http://localhost/login");
                 }
             }
         })

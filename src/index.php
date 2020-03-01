@@ -99,10 +99,10 @@ function redirectLogin()
  */
 function redirectArticle($tokens)
 {
-    if (count($tokens) < 3) {
+    if (count($tokens) < 2) {
         header("Location: http://localhost/home");
-    } else if (exists($tokens[2])) {
-        $_GET = array("articlePageName" => $tokens[2]);
+    } else if (exists($tokens[1])) {
+        $_GET = array("articlePageName" => $tokens[1]);
         require_once VIEWS_CTRL_DIR . "Article.php";
     } else {
         echo "can't find your article ";
