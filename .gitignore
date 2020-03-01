@@ -2,5 +2,4 @@
 /.idea
 /.vscode
 /node_modules
-/src/assets/images
 src/gen.sql
